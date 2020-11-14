@@ -3,10 +3,6 @@ import { UserProps } from "./User";
 class Attributes<Type> {
   constructor(private data: Type) {}
 
-  //   get<Key extends keyof Type>(key: Key): Type[Key] {
-  //     return this.data[key];
-  //   }
-
   get<Key extends keyof Type>(key: Key): Type[Key] {
     return this.data[key];
   }
