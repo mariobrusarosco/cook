@@ -51,3 +51,11 @@ console.log(me.data);
 me.set({ name: "Mario Brusarosco" });
 
 console.log(me.data);
+
+me.on("change", () => console.log("change #1"));
+me.on("change", () => console.log("change #2"));
+me.on("postMessage", () => console.log("message posted #1"));
+
+setTimeout(() => me.trigger("change"), 2000);
+setTimeout(() => me.trigger("postMessage"), 4000);
+setTimeout(() => me.trigger("change"), 6000);
