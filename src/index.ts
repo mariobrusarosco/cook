@@ -1,28 +1,53 @@
-import User from "./models/User";
+import { User } from "./models/User";
 
 console.log("Cook js");
 
-// const user = new User({
-//   id: "1",
-//   name: "Mario",
-//   age: 33,
-// });
+class Person {
+  constructor() {}
 
-// user.set({ age: 10 });
-// user.save();
-// user.fetch();
+  age = "mario";
+}
 
-// // const userAge = user.get("age");
+const person = new Person();
 
-// // console.log({ userAge });
+const loggerError = (message: string): never | void => {
+  if (!message) {
+    throw new Error();
+  }
+};
 
-// user.events.on("click", () => console.log(1));
-// // user.on("click", () => console.log(2));
-// // user.on("hover", () => console.log(3));
+loggerError("test");
 
-// user.events.trigger("click");
-// // user.trigger("hover");
+const json = '{name: "mario"}';
 
-const user = new User({ name: "Mario", age: 33, id: 1 });
+// const parsed = JSON.parse(json) as string;
 
-console.log(user.get("name"));
+// Inference using 'in'
+interface Admin {
+  id: string;
+  role: string;
+}
+
+interface User {
+  id: string;
+  email: string;
+}
+
+// function redirectUser(user: Admin | User) {
+//   if ("role" in user) {
+//     history.push(user.role);
+//   } else {
+//     history.push(user.email);
+//   }
+// }
+
+const me = new User({});
+me.set({ age: 35 });
+const name = me.get("name");
+const age = me.get("age");
+
+console.log(me.data);
+
+me.set({ name: "Mario Brusarosco" });
+
+console.log(me.data);
