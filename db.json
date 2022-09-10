@@ -2,8 +2,11 @@
   "users": [
     {
       "id": 1,
-      "name": "Mario",
-      "age": 10
+      "name": "Mario"
+    },
+    {
+      "id": 2,
+      "name": "Luigi"
     }
   ]
 }
