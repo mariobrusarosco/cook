@@ -1,12 +1,1 @@
-{
-  "users": [
-    {
-      "id": 1,
-      "name": "Mario"
-    },
-    {
-      "id": 2,
-      "name": "Luigi"
-    }
-  ]
-}
+{ "users": [{ "id": 2 }] }

@@ -1,22 +1,23 @@
 import axios, { AxiosResponse } from "axios";
+import { ApiSync } from "./ApiSync";
+import { Attributes } from "./Attributes";
 import { Eventing } from "./Eventing";
+import { Model } from "./Model";
 
 export interface UserProps {
-  id?: string;
+  id?: number;
   name?: string;
   age?: number;
 }
 
-export class User {
-  public events: Eventing = new Eventing();
+const rootUrl = "http://localhost:3000/users";
 
-  constructor(private data: UserProps) {}
-
-  get(propName: string): number | string {
-    return this.data[propName];
-  }
-
-  set(update: UserProps): void {
-    Object.assign(this.data, update);
+export class User extends Model<UserProps> {
+  static buildUser(attrs: UserProps): User {
+    return new User(
+      new Attributes<UserProps>(attrs),
+      new Eventing(),
+      new ApiSync<UserProps>(rootUrl)
+    );
   }
 }

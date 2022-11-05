@@ -88,15 +88,47 @@ console.log("Cook js");
 // setTimeout(() => me.trigger("change"), 6000);
 // setTimeout(() => me.trigger("createUser"), 1000);
 
-const user = new User({ id: "2" });
+// const user = new User({ id: "2" });
 
-user.set({ name: "Luigi" });
-user.save();
+// // user.set({ name: "Luigi" });
+// user.sync.fetch(user.get("id") as string);
+// user.sync.save(user.data);
+
+// user.events.on("change", () => console.log("I am the danger"));
+
+// setTimeout(() => {
+//   console.log(user?.data);
+//   user.events.trigger("change");
+// }, 3500);
+
+// --------------------------------
+
+const user = User.buildUser({ name: "Mario", age: 0, id: 2 });
+
+user.on("change", () => {
+  console.log({ user });
+});
+
 user.fetch();
 
-user.events.on("change", () => console.log("I am the danger"));
+user.set({ name: "asdsa" });
 
-setTimeout(() => {
-  console.log(user?.data);
-  user.events.trigger("change");
-}, 3500);
+// console.log(user.attributes.get("name"));
+
+// user.on("change", () => {
+//   console.log("User was changed");
+//   console.log(user);
+// });
+
+// user.set({ name: "Mario" });
+
+// window.name = "Montro";
+
+// const person = {
+//   name: "mario",
+//   sayHi: () => {
+//     console.log(this.name);
+//   },
+// };
+
+// person.sayHi();
